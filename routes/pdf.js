@@ -11,11 +11,18 @@ router.get('/', function (req, res, next) {
         url: "https://www.cpd.org.au/wp-content/uploads/2014/11/placeholder.pdf",
         responseType: "stream"
     }).then(function (response) {
-        console.log(response.data)
         response.data.pipe(fs.createWriteStream("./my.pdf"));
+
+        return axios({
+            method: "get",
+            url: "https://jsonplaceholder.typicode.com/posts",
+            responseType: "json"
+        })
+    }).then(function (response) {
+        console.log(response.data)
         res.status(200).send({
-            message: 'The file has been saved.'
-        });
+            message: response.data
+        })
     }).catch(err => {
         console.log(err);
         res.status(500).send({
