@@ -13,13 +13,15 @@ router.get('/', function (req, res) {
         .then(() => getData(dataPath))
         .then(function (response) {
             console.log(response.data)
-            res.status(200).send({
+
+            return res.status(200).send({
                 message: response.data
             })
         })
         .catch(err => {
             console.log(err);
-            res.status(500).send({
+
+            return res.status(500).send({
                 message: err.message
             })
         })
