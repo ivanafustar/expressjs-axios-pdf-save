@@ -1,11 +1,10 @@
 const axios = require('axios')
-const fs = require('fs')
 
 const getData = (dataUrl) => {
     return axios({
-        method: "get",
+        method: 'get',
         url: dataUrl,
-        responseType: "json"
+        responseType: 'json'
     })
 }
 
