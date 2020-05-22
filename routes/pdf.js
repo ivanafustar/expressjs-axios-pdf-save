@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const downloadPdf = require('../services/pdf.service');
 const getData = require('../services/data.service');
+const builder = require('../builders/html-table-builder');
 
 /* GET pdf */
 router.get('/', (req, res) => {
@@ -14,9 +15,7 @@ router.get('/', (req, res) => {
         .then((response) => {
             console.log(response.data)
 
-            return res.status(200).send({
-                message: response.data
-            })
+            return res.status(200).send(builder(response.data))
         })
         .catch(err => {
             console.log(err);
