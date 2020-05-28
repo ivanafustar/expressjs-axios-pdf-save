@@ -9,13 +9,15 @@ const builder = require('../builders/html-table-builder');
  */
 const createPDFfromHTML = (responseData, path) => {
 
-  return new Promise(resolve => {
-      pdf.create(builder(responseData))
-          .toStream((err, stream) => {
-              stream.pipe(fs.createWriteStream(path))
-              resolve()
-          })
-  })
+    return new Promise((resolve, reject) => {
+        return pdf
+            .create(builder(responseData))
+            .toStream((err, stream) => {
+                stream.pipe(fs.createWriteStream(path))
+                    .on('error', (e) => reject(e))
+                    .on('finish', () => resolve())
+            })
+    })
 }
 
 module.exports = createPDFfromHTML;

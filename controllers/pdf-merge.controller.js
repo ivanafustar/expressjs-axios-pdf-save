@@ -6,16 +6,13 @@ const merge = require('easy-pdf-merge');
  * @param destinationPath
  */
 const mergePdf = (filesPaths, destinationPath) => {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
         merge(filesPaths, destinationPath, (e) => {
             if (e) {
-                console.log('Error!')
-                console.log(e)
+                return reject(e);
             }
-            console.log('Success!')
+            return resolve(destinationPath);
         })
-        
-        resolve(destinationPath);
     })
 
 }
