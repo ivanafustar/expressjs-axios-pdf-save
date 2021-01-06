@@ -7,7 +7,7 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "easy-pdf-merge": "^0.2.2",
