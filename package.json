@@ -17,7 +17,7 @@
     "phantomjs-prebuilt": "^2.1.16",
     "pug": "2.0.0-beta11",
     "pizzip": "^3.0.6",
-    "docxtemplater": "^3.17.6"
+    "docxtemplater": "^3.31.4"
   },
   "devDependencies": {
     "eslint": "^7.0.0",
